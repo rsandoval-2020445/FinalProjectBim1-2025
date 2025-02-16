@@ -1,0 +1,695 @@
+{
+	"info": {
+		"_postman_id": "1b5b19be-e2e1-4338-8afe-5351e5b13cc5",
+		"name": "FinalProjectI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37951952"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "authRegister",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Eudani",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Del Cid",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "edelcid",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "edelcid@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Password123!",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "40918688",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "CLIENT",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3626/api/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "authLogin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);\r",
+									"postman.setGlobalVariable(\"token\", data.token)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "rdelcid@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Password123!",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3626/api/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "obtenerTodos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3626/api/users/",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"api",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listarUser",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3626/api/users/67b23e81b85d1c529f2f58b7",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"api",
+								"users",
+								"67b23e81b85d1c529f2f58b7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateUser",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Eudani",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Yanes",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "eyanes",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "eyanes@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Password321!",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "phone",
+									"value": "40918656",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3626/api/users/67b24694d578df4c78c6d918",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"api",
+								"users",
+								"67b24694d578df4c78c6d918"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUser",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3626/api/users/67b24694d578df4c78c6d918",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"api",
+								"users",
+								"67b24694d578df4c78c6d918"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePassword",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "oldPassword",
+									"value": "NuevaPass123!",
+									"type": "text"
+								},
+								{
+									"key": "newPassword",
+									"value": "Password123!",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3626/api/users/67b23e81b85d1c529f2f58b7/password",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"api",
+								"users",
+								"67b23e81b85d1c529f2f58b7",
+								"password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "createProduct",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Bicicleta 3 pedales",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "700",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "67b24f6fb0f463c92995eae7",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3626/api/products/create",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"api",
+								"products",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listarProducts",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3626/api/products",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listarProduct",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3626/api/products/67b24cbc486ce15560b186b0",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"api",
+								"products",
+								"67b24cbc486ce15560b186b0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateProduct",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Bicicleta BMW",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "8000",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "67b24f6fb0f463c92995eae7",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3626/api/products/67b251b7b0f463c92995eaf7",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"api",
+								"products",
+								"67b251b7b0f463c92995eaf7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteProduct",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3626/api/products/67b24cbc486ce15560b186b0",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"api",
+								"products",
+								"67b24cbc486ce15560b186b0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "createCategories",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Bicicletas",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Biciletas ultra extremas",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3626/api/categories/create",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"api",
+								"categories",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listarCategories",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3626/api/categories/",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"api",
+								"categories",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listarCategory",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3626/api/categories/67b24f6fb0f463c92995eae7",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"api",
+								"categories",
+								"67b24f6fb0f463c92995eae7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCategory",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Bebidas",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Bebidas frias y calientes",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3626/api/categories/67b24f6fb0f463c92995eae7",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"api",
+								"categories",
+								"67b24f6fb0f463c92995eae7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCategories",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2FlYTgyOWRjMjAzYzdkYWMxN2Q4OTQiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3Mzk1MDAwOTQsImV4cCI6MTczOTUwNzI5NH0.LLfIPc4ZeitYctiUTuFPNa8CccmJz9wVH_DQFodU7u0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3200/api/categories/67aea308027c3bd3f189dfcf",
+							"host": [
+								"localhost"
+							],
+							"port": "3200",
+							"path": [
+								"api",
+								"categories",
+								"67aea308027c3bd3f189dfcf"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
