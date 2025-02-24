@@ -2,5 +2,3 @@
 
 import User from "../src/user/user.model.js"
 import { isValidObjectId } from "mongoose"
-
-//

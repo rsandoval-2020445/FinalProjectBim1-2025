@@ -5,7 +5,7 @@ export const encrypt = async (password) => {
   try {
     return await hash(password)
   } catch (err) {
-    console.error("❌ Error encrypting password:", err)
+    console.error("Error encrypting password:", err)
     return err
   }
 }
