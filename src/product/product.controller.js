@@ -40,13 +40,17 @@ export const getAllProducts = async (req, res) => {
 // Obtener producto por ID (público)
 export const getProductById = async (req, res) => {
   try {
-    const product = await Product.findById(req.params.id).populate("category", "name")
+    const product = await Product.findById(req.params.id)
+      .populate("category", "name") // Muestra el nombre de la categoría
+
     if (!product) return res.status(404).json({ message: "Product not found" })
+
     res.json(product)
   } catch (err) {
-    res.status(500).json({ message: "Error retrieving product", error: err.message })
+    res.status(500).json({ message: err.message })
   }
 }
+
 
 // Actualizar producto (solo ADMIN, verificando categoría y evitando valores nulos)
 export const updateProduct = async (req, res) => {

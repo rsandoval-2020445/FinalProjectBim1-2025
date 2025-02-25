@@ -16,17 +16,26 @@ export const createInvoice = async (req, res) => {
 //Obtener una factura por ID
 export const getInvoiceById = async (req, res) => {
     try {
-        const invoice = await Invoice.findById(req.params.id).populate('products.product user')
-        if (!invoice) return res.status(404).json({message: 'Invoice not found'})
-            res.json(invoice)
-    } catch (err) {
-        res.status(500).send(
-            { 
-                message: err.message 
-            }
-        )
+        const invoice = await Invoice.findById(req.params.id)
+            .populate("user", "name email") // Muestra datos del usuario
+            .populate(
+                {
+                    path: "products.product",
+                    select: "name price category",
+                    populate: {
+                    path: "category",
+                    select: "name"
+                    }
+                }
+            )
+            
+        if (!invoice) return res.status(404).json({ message: "Invoice not found" })
+        res.json(invoice)
+    } catch (error) {
+        res.status(500).json({ message: error.message })
     }
 }
+  
 
 //Actualizar una factura
 export const updateInvoice = async (req, res) => {

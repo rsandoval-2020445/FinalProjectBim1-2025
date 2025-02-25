@@ -2,6 +2,7 @@ import { Router } from "express"
 import { getAllUsers, getUserById, updateUser, updatePassword, deleteUser } from "./user.controller.js"
 import { validateJwt } from "../../middlewares/validate.jwt.js"
 
+
 const api = Router()
 
 api.get("/", getAllUsers)
@@ -30,5 +31,6 @@ api.delete(
     validateJwt, 
     deleteUser
 )
+
 
 export default api
