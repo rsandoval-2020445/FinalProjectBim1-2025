@@ -22,7 +22,7 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "Eudani",
+									"value": "Raul",
 									"type": "text"
 								},
 								{
@@ -32,12 +32,12 @@
 								},
 								{
 									"key": "username",
-									"value": "edelcid",
+									"value": "rdelcid",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "edelcid@gmail.com",
+									"value": "rdelcid@gmail.com",
 									"type": "text"
 								},
 								{
@@ -52,7 +52,7 @@
 								},
 								{
 									"key": "role",
-									"value": "CLIENT",
+									"value": "ADMIN",
 									"type": "text"
 								}
 							]
@@ -97,8 +97,8 @@
 							"mode": "urlencoded",
 							"urlencoded": [
 								{
-									"key": "email",
-									"value": "rdelcid@gmail.com",
+									"key": "username",
+									"value": "edelcid",
 									"type": "text"
 								},
 								{
@@ -372,7 +372,7 @@
 								},
 								{
 									"key": "category",
-									"value": "67b24f6fb0f463c92995eae7",
+									"value": "67bcd24cb3a60012d160f853",
 									"type": "text"
 								}
 							]
@@ -684,6 +684,378 @@
 								"api",
 								"categories",
 								"67aea308027c3bd3f189dfcf"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Invoices",
+			"item": [
+				{
+					"name": "createInvoice",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user\": \"67b24694d578df4c78c6d918\",\r\n  \"customerName\": \"Eudani Del Cid\",\r\n  \"customerEmail\": \"edelcid@gmail.com\",\r\n  \"products\": [\r\n    {\r\n      \"product\": \"67bcd261b3a60012d160f857\",\r\n      \"description\": \"Bicicleta 3 pedales\",\r\n      \"quantity\": 1,\r\n      \"price\": 700\r\n    }\r\n  ],\r\n  \"totalAmount\": 700\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3626/api/invoices",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"api",
+								"invoices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerInvoice",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3626/api/invoices/67bce1fd8ab3d662f539c24c",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"api",
+								"invoices",
+								"67bce1fd8ab3d662f539c24c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateInvoice",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "customerName",
+									"value": "Prueba1111",
+									"type": "text"
+								},
+								{
+									"key": "totalAmount",
+									"value": "600",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3626/api/invoices/67bcd77b7b4aa7981fc3faf7",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"api",
+								"invoices",
+								"67bcd77b7b4aa7981fc3faf7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteInvoice",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3626/api/invoices/67bcd77b7b4aa7981fc3faf7",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"api",
+								"invoices",
+								"67bcd77b7b4aa7981fc3faf7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "createCart",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userId",
+									"value": "67b24694d578df4c78c6d918",
+									"type": "text"
+								},
+								{
+									"key": "productId",
+									"value": "67bcd261b3a60012d160f857",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3626/api/cart/add",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"api",
+								"cart",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerCartByUser",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3626/api/cart/67b24694d578df4c78c6d918",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"api",
+								"cart",
+								"67b24694d578df4c78c6d918"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCart",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userId",
+									"value": "67b24694d578df4c78c6d918",
+									"type": "text"
+								},
+								{
+									"key": "productId",
+									"value": "67bcd261b3a60012d160f857",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3626/api/cart/update",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"api",
+								"cart",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCart",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userId",
+									"value": "67b24694d578df4c78c6d918",
+									"type": "text"
+								},
+								{
+									"key": "productId",
+									"value": "67bcd261b3a60012d160f857",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3626/api/cart/remove",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"api",
+								"cart",
+								"remove"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "creatCheckout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userId",
+									"value": "67b24694d578df4c78c6d918",
+									"type": "text"
+								},
+								{
+									"key": "customerName",
+									"value": "Eudani Del Cid",
+									"type": "text"
+								},
+								{
+									"key": "customerEmail",
+									"value": "edelcid@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3626/api/cart/checkout",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"api",
+								"cart",
+								"checkout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerHistorial",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3626/api/cart/history/67b24694d578df4c78c6d918",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"api",
+								"cart",
+								"history",
+								"67b24694d578df4c78c6d918"
 							]
 						}
 					},

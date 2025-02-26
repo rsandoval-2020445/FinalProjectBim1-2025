@@ -1,4 +1,72 @@
 import Cart from "./cart.model.js";
+import Invoice from "../invoice/invoice.model.js";
+import Product from "../product/product.model.js";
+
+//Finalizar compra (Checkout)
+export const checkout = async (req, res) => {
+  try {
+    const { userId, customerName, customerEmail } = req.body // Asegúrate de que se extraigan estos valores
+
+    let cart = await Cart.findOne({ user: userId }).populate("products.product")
+    if (!cart || cart.products.length === 0) {
+      return res.status(400).json({ message: "El carrito está vacío" })
+    }
+
+    let totalAmount = 0
+    const invoiceProducts = []
+
+    for (let item of cart.products) {
+      const product = await Product.findById(item.product._id)
+      if (!product || product.stock < item.quantity) {
+        return res.status(400).json({ message: `Stock insuficiente para ${product.name}` })
+      }
+      product.stock -= item.quantity
+      await product.save()
+      totalAmount += product.price * item.quantity
+      invoiceProducts.push({
+        product: product._id,
+        description: product.name,
+        quantity: item.quantity,
+        price: product.price
+      })
+    }
+
+    // Ahora pasamos customerName y customerEmail al crear la factura
+    const newInvoice = new Invoice({
+      user: userId,
+      customerName: customerName,
+      customerEmail: customerEmail,
+      products: invoiceProducts,
+      totalAmount: totalAmount
+    })
+
+    await newInvoice.save()
+    await Cart.findByIdAndDelete(cart._id)
+
+    res.json({ message: "Compra realizada con éxito", invoice: newInvoice })
+  } catch (err) {
+    res.status(500).json({ message: err.message })
+  }
+}
+
+
+// Obtener historial de compras
+export const getPurchaseHistory = async (req, res) => {
+  try {
+    const invoices = await Invoice.find({ user: req.params.userId })
+      .populate("user", "name email")
+      .populate({
+        path: "products.product",
+        select: "name price category",
+        populate: { path: "category", select: "name" }
+      })
+
+    res.json(invoices)
+  } catch (err) {
+    res.status(500).json({ message: err.message })
+  }
+}
+
 
 //Obtener carrito de un usuario
 export const getCartByUser = async (req, res) => {
@@ -22,9 +90,7 @@ export const getCartByUser = async (req, res) => {
     } catch (err) {
       res.status(500).json({ message: err.message })
     }
-  }
-  
-  
+}
 
 //Agregar producto al carrito
 export const addToCart = async (req, res) => {

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getCartByUser, addToCart, updateCartItem, removeFromCart } from "./cart.controller.js";
+import { getCartByUser, addToCart, updateCartItem, removeFromCart, checkout, getPurchaseHistory } from "./cart.controller.js";
 import { validateJwt } from "../../middlewares/validate.jwt.js";
 
 const router = Router()
@@ -28,4 +28,15 @@ router.delete(
     removeFromCart
 )
 
+router.post(
+    '/checkout',
+    validateJwt, 
+    checkout
+)
+
+router.get(
+    '/history/:userId', 
+    validateJwt, 
+    getPurchaseHistory
+)
 export default router
