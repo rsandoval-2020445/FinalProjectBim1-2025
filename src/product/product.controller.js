@@ -1,3 +1,4 @@
+// src/product/product.controller.js
 import Product from "./product.model.js"
 import Category from "../category/category.model.js"
 
@@ -27,6 +28,38 @@ export const createProduct = async (req, res) => {
   }
 }
 
+// src/product/product.controller.js
+
+export const getTopSellingProduct = async (req, res) => {
+  try {
+    console.log("Consultando productos más vendidos...");  // Depuración
+    const products = await Product.aggregate([
+      { $match: { stock: { $gt: 0 } } },
+      { $sort: { stock: -1 } },
+      { $limit: 10 }
+    ]);
+    console.log("Productos obtenidos:", products);  // Depuración
+    res.json(products);
+  } catch (err) {
+    console.error("Error en getTopSellingProduct:", err.message);
+    res.status(500).json({ message: err.message });
+  }
+}
+
+export const getOutOfStockProducts = async (req, res) => {
+  try {
+    console.log("Consultando productos fuera de stock...");  // Depuración
+    const products = await Product.aggregate([
+      { $match: { stock: 0 } }
+    ]);
+    console.log("Productos obtenidos:", products);  // Depuración
+    res.json(products);
+  } catch (err) {
+    console.error("Error en getOutOfStockProducts:", err.message);
+    res.status(500).json({ message: err.message });
+  }
+}
+
 // Obtener todos los productos (público)
 export const getAllProducts = async (req, res) => {
   try {
@@ -50,7 +83,6 @@ export const getProductById = async (req, res) => {
     res.status(500).json({ message: err.message })
   }
 }
-
 
 // Actualizar producto (solo ADMIN, verificando categoría y evitando valores nulos)
 export const updateProduct = async (req, res) => {
@@ -89,7 +121,7 @@ export const deleteProduct = async (req, res) => {
       return res.status(403).json({ message: "Only admins can delete products" })
     }
 
-    const deletedProduct = await Product.findByIdAndDelete(req.params.id)
+    const deletedProduct = await Product.updateMany({ category: req.params.id }, { $unset: { category: "" } })
     if (!deletedProduct) return res.status(404).json({ message: "Product not found" })
     res.json({ message: "Product deleted successfully" })
   } catch (err) {
