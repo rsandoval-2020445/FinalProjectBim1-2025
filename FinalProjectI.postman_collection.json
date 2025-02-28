@@ -98,7 +98,7 @@
 							"urlencoded": [
 								{
 									"key": "username",
-									"value": "edelcid",
+									"value": "admin",
 									"type": "text"
 								},
 								{
@@ -372,7 +372,7 @@
 								},
 								{
 									"key": "category",
-									"value": "67bcd24cb3a60012d160f853",
+									"value": "67bfe6dbd0d062fa36c88882",
 									"type": "text"
 								}
 							]
@@ -516,6 +516,46 @@
 								"api",
 								"products",
 								"67b24cbc486ce15560b186b0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "outStock",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3626/api/products/outofstock",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"api",
+								"products",
+								"outofstock"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "topSelling",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3626/api/products/top-selling",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"api",
+								"products",
+								"top-selling"
 							]
 						}
 					},
@@ -670,20 +710,24 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2FlYTgyOWRjMjAzYzdkYWMxN2Q4OTQiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3Mzk1MDAwOTQsImV4cCI6MTczOTUwNzI5NH0.LLfIPc4ZeitYctiUTuFPNa8CccmJz9wVH_DQFodU7u0",
+								"value": "{{token}}",
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
 						"url": {
-							"raw": "localhost:3200/api/categories/67aea308027c3bd3f189dfcf",
+							"raw": "localhost:3626/api/categories/67bfe651a52271c0dc2a0c71",
 							"host": [
 								"localhost"
 							],
-							"port": "3200",
+							"port": "3626",
 							"path": [
 								"api",
 								"categories",
-								"67aea308027c3bd3f189dfcf"
+								"67bfe651a52271c0dc2a0c71"
 							]
 						}
 					},
