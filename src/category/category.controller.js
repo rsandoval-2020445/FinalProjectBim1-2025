@@ -1,4 +1,5 @@
 import Category from "./category.model.js"
+import Product from "../product/product.model.js"
 
 // Crear categoría (solo ADMIN)
 export const createCategory = async (req, res) => {
@@ -51,17 +52,26 @@ export const updateCategory = async (req, res) => {
   }
 }
 
-// Eliminar categoría (solo ADMIN)
+// Eliminar categoría y actualizar todos los productos que pertenecen a esta categoría
 export const deleteCategory = async (req, res) => {
   try {
+    // Verificar si el rol es ADMIN
     if (req.user.role !== "ADMIN") {
       return res.status(403).json({ message: "Only admins can delete categories" })
     }
 
+    // Intentar encontrar y eliminar la categoría por ID
     const deletedCategory = await Category.findByIdAndDelete(req.params.id)
-    if (!deletedCategory) return res.status(404).json({ message: "Category not found" })
+    
+    // Si la categoría no existe, devolver un error
+    if (!deletedCategory) {
+      return res.status(404).json({ message: "Category not found" })
+    }
+    
+    // Responder si la eliminación fue exitosa
     res.json({ message: "Category deleted successfully" })
   } catch (err) {
+    // Error en el servidor
     res.status(500).json({ message: "Error deleting category", error: err.message })
   }
 }
