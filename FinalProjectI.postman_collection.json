@@ -22,22 +22,22 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "Raul",
+									"value": "Anibal",
 									"type": "text"
 								},
 								{
 									"key": "surname",
-									"value": "Del Cid",
+									"value": "De Leon",
 									"type": "text"
 								},
 								{
 									"key": "username",
-									"value": "rdelcid",
+									"value": "adeleon",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "rdelcid@gmail.com",
+									"value": "adeleon@gmail.com",
 									"type": "text"
 								},
 								{
@@ -47,12 +47,12 @@
 								},
 								{
 									"key": "phone",
-									"value": "40918688",
+									"value": "33787849",
 									"type": "text"
 								},
 								{
 									"key": "role",
-									"value": "ADMIN",
+									"value": "CLIENT",
 									"type": "text"
 								}
 							]
@@ -80,7 +80,8 @@
 							"script": {
 								"exec": [
 									"var data = JSON.parse(responseBody);\r",
-									"postman.setGlobalVariable(\"token\", data.token)"
+									"postman.setGlobalVariable(\"token\", data.token)\r",
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -92,12 +93,18 @@
 							"type": "noauth"
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "urlencoded",
 							"urlencoded": [
 								{
-									"key": "username",
+									"key": "userLoggin",
 									"value": "admin",
 									"type": "text"
 								},
@@ -180,7 +187,7 @@
 							"urlencoded": []
 						},
 						"url": {
-							"raw": "localhost:3626/api/users/67b23e81b85d1c529f2f58b7",
+							"raw": "localhost:3626/api/users/67c5c3aa031984cad3e8773c",
 							"host": [
 								"localhost"
 							],
@@ -188,7 +195,7 @@
 							"path": [
 								"api",
 								"users",
-								"67b23e81b85d1c529f2f58b7"
+								"67c5c3aa031984cad3e8773c"
 							]
 						}
 					},
@@ -213,29 +220,23 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "Eudani",
+									"value": "Raúl",
 									"type": "text"
 								},
 								{
 									"key": "surname",
-									"value": "Yanes",
+									"value": "Del Cid",
 									"type": "text"
 								},
 								{
 									"key": "username",
-									"value": "eyanes",
+									"value": "rdelcid",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "eyanes@gmail.com",
+									"value": "rdelcid@gmail.com",
 									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "Password321!",
-									"type": "text",
-									"disabled": true
 								},
 								{
 									"key": "phone",
@@ -245,7 +246,7 @@
 							]
 						},
 						"url": {
-							"raw": "localhost:3626/api/users/67b24694d578df4c78c6d918",
+							"raw": "localhost:3626/api/users/67c5b6fd8f98a0f93a8b7d21",
 							"host": [
 								"localhost"
 							],
@@ -253,7 +254,7 @@
 							"path": [
 								"api",
 								"users",
-								"67b24694d578df4c78c6d918"
+								"67c5b6fd8f98a0f93a8b7d21"
 							]
 						}
 					},
@@ -274,7 +275,7 @@
 							}
 						],
 						"url": {
-							"raw": "localhost:3626/api/users/67b24694d578df4c78c6d918",
+							"raw": "localhost:3626/api/users/67c5b259a76dcdb221a39f15",
 							"host": [
 								"localhost"
 							],
@@ -282,7 +283,7 @@
 							"path": [
 								"api",
 								"users",
-								"67b24694d578df4c78c6d918"
+								"67c5b259a76dcdb221a39f15"
 							]
 						}
 					},
@@ -357,22 +358,22 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "Bicicleta 3 pedales",
+									"value": "Tops rojos y negros",
 									"type": "text"
 								},
 								{
 									"key": "price",
-									"value": "700",
+									"value": "90",
 									"type": "text"
 								},
 								{
 									"key": "stock",
-									"value": "3",
+									"value": "7",
 									"type": "text"
 								},
 								{
 									"key": "category",
-									"value": "67bfe6dbd0d062fa36c88882",
+									"value": "67c5c5bb031984cad3e8774d",
 									"type": "text"
 								}
 							]
@@ -423,7 +424,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3626/api/products/67b24cbc486ce15560b186b0",
+							"raw": "localhost:3626/api/products/67c5c65e031984cad3e87758",
 							"host": [
 								"localhost"
 							],
@@ -431,7 +432,7 @@
 							"path": [
 								"api",
 								"products",
-								"67b24cbc486ce15560b186b0"
+								"67c5c65e031984cad3e87758"
 							]
 						}
 					},
@@ -456,29 +457,28 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "Bicicleta BMW",
+									"value": "Control de XBOX",
 									"type": "text"
 								},
 								{
 									"key": "price",
-									"value": "8000",
+									"value": "750",
 									"type": "text"
 								},
 								{
 									"key": "stock",
-									"value": "2",
+									"value": "1",
 									"type": "text"
 								},
 								{
 									"key": "category",
-									"value": "67b24f6fb0f463c92995eae7",
-									"type": "text",
-									"disabled": true
+									"value": "67c5c648031984cad3e87754",
+									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "localhost:3626/api/products/67b251b7b0f463c92995eaf7",
+							"raw": "localhost:3626/api/products/67c5c65e031984cad3e87758",
 							"host": [
 								"localhost"
 							],
@@ -486,7 +486,7 @@
 							"path": [
 								"api",
 								"products",
-								"67b251b7b0f463c92995eaf7"
+								"67c5c65e031984cad3e87758"
 							]
 						}
 					},
@@ -585,12 +585,12 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "Bicicletas",
+									"value": "Ropa de Verano",
 									"type": "text"
 								},
 								{
 									"key": "description",
-									"value": "Biciletas ultra extremas",
+									"value": "Shorts y tops",
 									"type": "text"
 								}
 							]
@@ -736,141 +736,6 @@
 			]
 		},
 		{
-			"name": "Invoices",
-			"item": [
-				{
-					"name": "createInvoice",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{token}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"user\": \"67b24694d578df4c78c6d918\",\r\n  \"customerName\": \"Eudani Del Cid\",\r\n  \"customerEmail\": \"edelcid@gmail.com\",\r\n  \"products\": [\r\n    {\r\n      \"product\": \"67bcd261b3a60012d160f857\",\r\n      \"description\": \"Bicicleta 3 pedales\",\r\n      \"quantity\": 1,\r\n      \"price\": 700\r\n    }\r\n  ],\r\n  \"totalAmount\": 700\r\n}\r\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:3626/api/invoices",
-							"host": [
-								"localhost"
-							],
-							"port": "3626",
-							"path": [
-								"api",
-								"invoices"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "obtenerInvoice",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{token}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "localhost:3626/api/invoices/67bce1fd8ab3d662f539c24c",
-							"host": [
-								"localhost"
-							],
-							"port": "3626",
-							"path": [
-								"api",
-								"invoices",
-								"67bce1fd8ab3d662f539c24c"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "updateInvoice",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{token}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "customerName",
-									"value": "Prueba1111",
-									"type": "text"
-								},
-								{
-									"key": "totalAmount",
-									"value": "600",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "localhost:3626/api/invoices/67bcd77b7b4aa7981fc3faf7",
-							"host": [
-								"localhost"
-							],
-							"port": "3626",
-							"path": [
-								"api",
-								"invoices",
-								"67bcd77b7b4aa7981fc3faf7"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "deleteInvoice",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{token}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "localhost:3626/api/invoices/67bcd77b7b4aa7981fc3faf7",
-							"host": [
-								"localhost"
-							],
-							"port": "3626",
-							"path": [
-								"api",
-								"invoices",
-								"67bcd77b7b4aa7981fc3faf7"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "Cart",
 			"item": [
 				{
@@ -889,12 +754,12 @@
 							"urlencoded": [
 								{
 									"key": "userId",
-									"value": "67b24694d578df4c78c6d918",
+									"value": "67c5c492031984cad3e8773f",
 									"type": "text"
 								},
 								{
 									"key": "productId",
-									"value": "67bcd261b3a60012d160f857",
+									"value": "67c5c65e031984cad3e87758",
 									"type": "text"
 								},
 								{
@@ -1100,6 +965,141 @@
 								"cart",
 								"history",
 								"67b24694d578df4c78c6d918"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Invoices",
+			"item": [
+				{
+					"name": "createInvoice",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user\": \"67b24694d578df4c78c6d918\",\r\n  \"customerName\": \"Carlos Colapint\",\r\n  \"customerEmail\": \"ccolapinto@gmail.com\",\r\n  \"products\": [\r\n    {\r\n      \"product\": \"67c5c65e031984cad3e87758\",\r\n      \"description\": \"Control de XBOX\",\r\n      \"quantity\": 4,\r\n      \"price\": 750\r\n    }\r\n  ],\r\n  \"totalAmount\": 750\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3626/api/invoices",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"api",
+								"invoices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerInvoice",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3626/api/invoices/67bce1fd8ab3d662f539c24c",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"api",
+								"invoices",
+								"67bce1fd8ab3d662f539c24c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateInvoice",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "customerName",
+									"value": "Prueba1111",
+									"type": "text"
+								},
+								{
+									"key": "totalAmount",
+									"value": "600",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3626/api/invoices/67bcd77b7b4aa7981fc3faf7",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"api",
+								"invoices",
+								"67bcd77b7b4aa7981fc3faf7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteInvoice",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3626/api/invoices/67bcd77b7b4aa7981fc3faf7",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"api",
+								"invoices",
+								"67bcd77b7b4aa7981fc3faf7"
 							]
 						}
 					},

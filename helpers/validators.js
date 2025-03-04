@@ -37,7 +37,7 @@ export const registerValidator = [
 
 // Validación para login
 export const loginValidator = [
-    body('username', 'Username cannot be empty')  
+    body('userLoggin', 'Username cannot be empty')  
     .notEmpty()
     .toLowerCase(),
     body('password', 'Password must be strong and at least 8 characters long') 

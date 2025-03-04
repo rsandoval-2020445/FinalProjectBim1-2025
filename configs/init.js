@@ -1,11 +1,12 @@
 import Category from "../src/category/category.model.js"
 import bcrypt from 'bcrypt'
 import User from '../src/user/user.model.js'
+import { encrypt } from "../utils/encrypt.js"
 
 const createAdmin = async () => {
   const adminExists = await User.findOne({ username: "admin" })
   if (!adminExists) {
-    const hashedPassword = await bcrypt.hash("Password123!", 10) // Contraseña predeterminada
+    const hashedPassword = await encrypt("Password123!") // Contraseña predeterminada
     const admin = new User({
       username: "admin",
       password: hashedPassword,
