@@ -1,5 +1,5 @@
-node_modules
-
+# Ignorar la carpeta node_modules
 node_modules/
+
+# Ignorar archivos de logs
 *.log
-package-lock.json
