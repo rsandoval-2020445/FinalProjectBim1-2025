@@ -3,3 +3,6 @@ node_modules/
 
 # Ignorar archivos de logs
 *.log
+
+# Ignorar el archivo package-lock.json si quieres evitar subirlo (descomentar si es necesario)
+# package-lock.json
