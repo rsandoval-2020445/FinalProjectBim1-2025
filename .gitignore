@@ -5,4 +5,4 @@ node_modules/
 *.log
 
 # Ignorar el archivo package-lock.json si quieres evitar subirlo (descomentar si es necesario)
-# package-lock.json
+package-lock.json
